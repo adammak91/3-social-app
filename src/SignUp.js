@@ -3,10 +3,4 @@ import './SignUp.css';
 
 
 
-
-
-
-
-
-
 export default SignUp;

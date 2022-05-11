@@ -3,9 +3,13 @@ import React, { Component } from "react";
 import './Home.css';
 import Newpost from "./Newpost";
 
+
+
 class Home extends Component {
-  constructor() {
-    super();
+
+  constructor(props) {
+    super(props);
+
 
     this.state = {
       setPosts: []
@@ -18,32 +22,39 @@ class Home extends Component {
         this.setState({
 
           setPosts: res.data
-          // console.log(res.data);
-
         })
-
-      }
-
-      // .catch(err => console.log(error));
-  
+      })
   }
+
+  
+  getOlderPost = () => {
+    axios.post(`https://akademia108.pl/api/social-app/post/older-then`)
+    then((res) => {
+      this.setState({setPosts: this.state.setPosts.concat(res.data) })
+    })
+  }
+
+
+
   componentDidMount() {
     this.getLatestPosts();
   }
 
-
-
   render() {
     let postElements = this.state.setPosts.map(userPost => {
-      return <div className='post'><div className='user'>Uzytkownik<br></br>
-        <img src='https://akademia108.pl/api/social-app/img/avatar1.png'></img>{item.user.username}</div><div className='date'>Data</div>{item.created_at}<div className='text'>Tresc posta
-          <br></br>{item.content}</div><div>Liczba polubien<br></br>{item.likes.length}</div></div>
+      return (
+       <div className='post'key={userPost.id}>
+        <div className='avatar'>Uzytkownik<img src={userPost.user.avatar_url} alt="photo"></img></div>
+        <div className='post-date'>Data{transformDate(userPost.created_at)}</div>
+        <div className='post-text'>Tresc posta{userPost.content}</div>
+        <div className="likes">Polubienia{userPost.likes.length}</div>
+        </div>
+      )
+    });
 
-    })
-
-    //console.log(postElements);
+    
     return (
-      <div>{postElements}<button onClick={() => <Newpost></Newpost>}>Pobierz wiecej</button></div>
+      <button onClick={this.getOlderPost}>Pobierz</button>
 
     );
 
