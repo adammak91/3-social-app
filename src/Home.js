@@ -40,11 +40,7 @@ class Home extends Component {
         'Accept': 'application/json'
       }
     }
-
-    let data = {date: this.state.setPosts[this.state.setPosts.length - 1].created_at}
     axios.post('https://akademia108.pl/api/social-app/post/older-then',
-          JSON.stringify(requestData),
-          JSON.stringify(axiosConfig)
     )
     then((res) => {
       this.setState({setPosts: this.state.setPosts.concat(res.data) })
