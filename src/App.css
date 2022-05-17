@@ -1,5 +1,46 @@
 .App {
   text-align: center;
+  text-decoration: none;
+  width: 100%;
+  border: 1px solid black;
+  background-color: grey;
+  position: relative;
 }
 
+nav {
+  background-color:midnightblue;
+  position: relative;
+  height: 80px;
+  margin-top: 0px;
+}
+.header {
+  color: mediumspringgreen;
+  margin-top: 0;
+}
 
+li {
+  width: 80px;
+  border-radius: 10px;
+  color: aquamarine;
+  background-color: purple;
+  display: inline;
+  position: absolute;
+}
+
+a {
+  color: aquamarine;
+  border: none;
+  text-decoration: none;
+}
+
+.home {
+  left: 10%;
+}
+
+.signup {
+  left: 49%;
+}
+
+.login {
+  left: 90%;
+}

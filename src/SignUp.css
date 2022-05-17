@@ -1,0 +1,26 @@
+label {
+  display: block;
+  margin-top: 15px;
+}
+input {
+  width: 250px;
+  height: 25px;
+}
+
+.form-group {
+  background-color: gray;
+  height: 600px;
+}
+
+.submit {
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: lightskyblue;
+}
+.submit:hover {
+  background-color: blue;
+  cursor: pointer;
+}

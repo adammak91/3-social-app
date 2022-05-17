@@ -1,81 +1,56 @@
-import axios from "axios";
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import './Home.css';
-import Newpost from "./Newpost";
-
+import axios from 'axios';
+import Alteposts from './Alteposts';
 
 
 class Home extends Component {
 
-  constructor(props) {
-    super(props);
+    constructor() {
+        super();
 
-
-    this.state = {
-      setPosts: []
+        this.state = {
+          postList: []
+      };
     }
-  }
 
-  getLatestPosts = () => {
-    const axiosConfig = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    }
-    axios.post('https://akademia108.pl/api/social-app/post/latest', {}, axiosConfig)
+
+    getPosts = () => {
+      let axiosConfig = {
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          }
+      };
+
+      axios.post('https://akademia108.pl/api/social-app/post/latest',{},axiosConfig)
       .then((res) => {
-        this.setState({
-
-          setPosts: res.data
-        });
+          console.log(res.data);
+          this.setState({postList:res.data})
       })
   }
 
-  
-  getOlderPost = () => {
-    const axiosConfig = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    }
-    axios.post('https://akademia108.pl/api/social-app/post/older-then',
-    )
-    then((res) => {
-      this.setState({setPosts: this.state.setPosts.concat(res.data) })
-    })
+  componentDidMount(){
+      this.getPosts();
   }
 
-
-
-  componentDidMount() {
-    this.getLatestPosts();
-  }
 
   render() {
-    let postElements = this.state.setPosts.map(userPost => {
       return (
-       <div className='post'key={userPost.id}>
-        <div className='avatar'>Uzytkownik<img src={userPost.user.avatar_url} alt="photo"></img></div>
-        <div className='post-date'>Data{(userPost.created_at)}</div>
-        <div className='post-text'>Tresc posta{userPost.content}</div>
-        <div className="likes">Polubienia{userPost.likes.length}</div>
-        </div>
+  
+          <div className="postsList">
+              <h3>Posts</h3>
+              <Alteposts posts={this.state.postList} />
+          </div>
       )
-    });
-
-    
-    return (
-      <button onClick={this.getOlderPost}>Pobierz</button>
-
-    );
-
+      // return (
+        
+      //   <div>{postElements}<button onClick={()=> <Newpost></Newpost>}>Pobierz wiecej</button></div>
+      // )
+    }
   }
 
-}
-
-
+   
 
 
 export default Home;

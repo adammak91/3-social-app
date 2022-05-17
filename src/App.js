@@ -1,60 +1,46 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Routes, Route, Outlet, Link, Router } from "react-router-dom";
 import Home from './Home';
-import { render } from '@testing-library/react';
+import Login from './Login';
+import SignUp from './SignUp';
+import { Routes, Route, Outlet, Link, Router } from "react-router-dom";
 
 
 
 
-class App extends Component {
+function App() {
 
-
-  constructor() {
-    super();
-  }
-
-
-render() {
-
-
-
+  
+ 
   return (
+
+   
     <div className="App">
+     
+    <nav>
+        <h2 className='header'>Social-App</h2>
+          <ul>
+            <li className='home'>
+              <Link to="/">Home</Link>
+            </li>
+            <li className='login'>
+              <Link to="/login">Login</Link>
+            </li>
+            <li className='signup'>
+              <Link to="/signup">SignUp</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/signUp" element={<SignUp />}/>
+        </Routes>
+       
 
-      <nav>
-        <h2 className='Header'>Social-app</h2>
-        <ul>
-          <li className='Home'>
-            <Link to="/">Home</Link>
-          </li>
-
-          <li className='Login'>
-            <Link to="login">Login</Link>
-          </li>
-
-          <li className='Signup'>
-            <Link to="signup">SignUp</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signUp" element={<SignUp />} />
-      </Routes>
-
-
-    </div>
-
-
-
-
+        
+      </div>
+    
   );
-  }
 }
-
 
 export default App;
