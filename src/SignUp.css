@@ -19,8 +19,11 @@ input {
   text-transform: uppercase;
   font-weight: 700;
   background-color: lightskyblue;
+  transition-duration: 0.3s;
 }
 .submit:hover {
   background-color: blue;
   cursor: pointer;
+  color: white;
+  font-size: 15px;
 }
