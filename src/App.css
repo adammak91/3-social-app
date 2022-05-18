@@ -16,6 +16,13 @@ nav {
 .header {
   color: mediumspringgreen;
   margin-top: 0;
+  font-family:cursive;
+}
+ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
 }
 
 li {
@@ -23,24 +30,20 @@ li {
   border-radius: 10px;
   color: aquamarine;
   background-color: purple;
-  display: inline;
-  position: absolute;
+  margin-bottom: 0px;
+  list-style: none;
 }
 
 a {
   color: aquamarine;
   border: none;
   text-decoration: none;
+  transition-duration: 0.3s;
+  
+}
+a:hover {
+  color: rgb(0, 204, 255);
+  font-size: 17px;
+  font-family:Verdana, Tahoma, sans-serif;
 }
 
-.home {
-  left: 10%;
-}
-
-.signup {
-  left: 49%;
-}
-
-.login {
-  left: 90%;
-}

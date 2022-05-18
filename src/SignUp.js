@@ -9,7 +9,7 @@ const SignUp = () => {
         
         <div>
         <h3>SignUp</h3>
-         <form action="https://formspree.io/f/moqrkrya" method="POST">
+         <form action='http://akademia108.pl/api/social-app/user/signup' method="POST">
              <div className="form-group">
                    <label>Nazwa uzytkownika</label>
                    <input type="text" minLength={5}></input>

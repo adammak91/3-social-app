@@ -17,7 +17,9 @@ function App() {
     <div className="App">
      
     <nav>
+      
         <h2 className='header'>Social-App</h2>
+        
           <ul>
             <li className='home'>
               <Link to="/">Home</Link>
@@ -29,6 +31,7 @@ function App() {
               <Link to="/signup">SignUp</Link>
             </li>
           </ul>
+
         </nav>
         <Routes>
           <Route path="/" element={<Home />}/>
