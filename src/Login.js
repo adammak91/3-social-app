@@ -22,7 +22,7 @@ class Login extends Component {
             'Accept': 'application/json'
         }
 
-        axios.post('https://akademia108.pl/api/social-app/user/login',JSON.stringify(user),
+        axios.post('https://akademia108.pl/api/social-app/user/login', user ,
             { 'headers': headers })
             .then((req) => {
 
