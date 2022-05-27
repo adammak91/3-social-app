@@ -20,16 +20,17 @@ class Home extends Component {
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
+                Accept: 'application/json',
+                Authorization: "Bearer " + this.props.user?.jwt_token,
+            },
         };
 
         axios.post('https://akademia108.pl/api/social-app/post/latest', {}, axiosConfig)
             .then((res) => {
                 console.log(res.data);
-                this.setState({ postList: res.data })
-            })
-    }
+                this.setState({ postList: res.data });
+            });
+    };
 
 
 
@@ -37,14 +38,15 @@ class Home extends Component {
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        }
+                Accept: 'application/json',
+                Authorization: "Bearer " + this.props.user?.jwt_token,
+            },
+        };
         axios.post('https://akademia108.pl/api/social-app/post/older-then',
             { date: this.state.postList[this.state.postList.length - 1].created_at },
             axiosConfig)
             .then((res) => {
-                this.setState({ postList: this.state.postList.concat(res.data) })
+                this.setState({ postList: this.state.postList.concat(res.data) });
             })
         // .catch((err) => {
         //     console.log("AXIOS ERROR: ", err);
