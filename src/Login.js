@@ -13,7 +13,7 @@ class Login extends Component {
             password: this.password,
             ttl: "3600",
         };
-        console.log(user);
+        // console.log(user);
 
         const headers = {
             'Content-Type': 'application/json',
@@ -28,16 +28,15 @@ class Login extends Component {
             .then((req) => {
                 localStorage.setItem("user", JSON.stringify(req.data));
                 this.props.setUser(req.data);
-                console.log(req.data);
+                // console.log(req.data);
             });
             
             // .catch((error) => {
             //     console.error(error);
             // })
     };
-    
-    render() {
 
+    render() {
         return (
             <div>
                 {this.props.user && <Navigate to="/" />}

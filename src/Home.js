@@ -25,9 +25,9 @@ class Home extends Component {
             },
         };
 
-        axios.post('https://akademia108.pl/api/social-app/post/latest', {}, axiosConfig)
+        axios.post('https://akademia108.pl/api/social-app/post/latest', {}, axiosConfig )
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({ postList: res.data });
             });
     };
@@ -44,29 +44,31 @@ class Home extends Component {
         };
         axios.post('https://akademia108.pl/api/social-app/post/older-then',
             { date: this.state.postList[this.state.postList.length - 1].created_at },
-            axiosConfig)
+            axiosConfig )
             .then((res) => {
                 this.setState({ postList: this.state.postList.concat(res.data) });
-            })
+            });
         // .catch((err) => {
         //     console.log("AXIOS ERROR: ", err);
         // })
-    }
+    };
 
     componentDidMount() {
         this.getPosts();
     }
 
+    componentDidUpdate() {
+        this.getPosts();
+      }
+
     render() {
-
         return (
-
             <div className="postsList">
                 <h3>Posts</h3>
                 <Alteposts posts={this.state.postList} />
                 <button onClick={this.getNextPost}>Wiecej</button>
             </div>
-        )
+        );
     }
 }
 

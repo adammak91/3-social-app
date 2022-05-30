@@ -16,21 +16,21 @@ function App() {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'Bearer' + this.state.user?.jwt_token,
+      'Authorization': 'Bearer' + user?.jwt_token,
     }
   };
 
-
+  console.log(user)
   const Logout = (e) => {
     e.preventDefault();
 
     axios.post('https://akademia108.pl/api/social-app/user/logout', {}, axiosConfig)
 
       .then((req) => {
-        localStorage.removeItem('user');
+        setUser(null);
+        localStorage.removeItem('user', 'null');
         // let reqData = req.data;
       //  localStorage.clear('user');
-        setUser(req.data);
       });
 
   //      error => {
@@ -62,7 +62,7 @@ function App() {
             <Link to="/signup">SignUp</Link>
           </li>}
 
-          {!user && <li className='logout'>
+          {user && <li className='logout'>
             <Link to="/" onClick={Logout}>Logout</Link>
           </li>}
 
