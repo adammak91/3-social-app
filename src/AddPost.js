@@ -7,7 +7,7 @@ class PostAdd extends Component {
     super();
 
     this.state = {
-      message: '',
+      newPost: '',
     }
   }
 
@@ -30,11 +30,11 @@ class PostAdd extends Component {
       'https://akademia108.pl/api/social-app/post/add', {data}, axiosConfig)
       .then(res => {
         console.log(res);
-        this.setState({message: res.data})
+        this.setState({newPost: res.data})
       }
 
       ).catch(error => {
-        console.log(error.data.message);
+        console.log(error.data.newPost);
         this.setState(error.data)
       })
   }
