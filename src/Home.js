@@ -21,7 +21,7 @@ class Home extends Component {
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
-                Authorization: "Bearer " + this.props.user?.jwt_token,
+                Authorization: "Bearer " + this.props.user.jwt_token,
             },
         };
 
@@ -39,7 +39,7 @@ class Home extends Component {
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
-                Authorization: "Bearer " + this.props.user?.jwt_token,
+                Authorization: "Bearer " + this.props.user.jwt_token,
             },
         };
         axios.post('https://akademia108.pl/api/social-app/post/older-then',

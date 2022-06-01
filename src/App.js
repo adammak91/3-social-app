@@ -2,7 +2,7 @@ import './App.css';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
-import Logout from './Logout';
+// import Logout from './Logout';
 import { Routes, Route, Outlet, Link, Router } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
@@ -15,8 +15,8 @@ function App() {
   let axiosConfig = {
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer' + user?.jwt_token,
+      Accept: 'application/json',
+      Authorization: 'Bearer' + user.jwt_token,
     }
   };
 
@@ -24,11 +24,11 @@ function App() {
   const Logout = (e) => {
     e.preventDefault();
 
-    axios.post('https://akademia108.pl/api/social-app/user/logout', {}, axiosConfig)
+    axios.post('https://akademia108.pl/api/social-app/user/logout', {}, axiosConfig )
 
       .then((req) => {
         setUser(null);
-        localStorage.removeItem('user', 'null');
+        localStorage.removeItem('user', null);
         // let reqData = req.data;
       //  localStorage.clear('user');
       });
