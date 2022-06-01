@@ -16,7 +16,7 @@ function App() {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: 'Bearer' + user.jwt_token,
+      Authorization: 'Bearer' + user.jwt_token
     }
   };
 
