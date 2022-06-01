@@ -28,15 +28,16 @@ class PostAdd extends Component {
 
     axios.post(
       'https://akademia108.pl/api/social-app/post/add', {data}, axiosConfig)
-      .then(res => {
-        console.log(res);
-        this.setState({newPost: res.data})
+      .then(req => {
+        let reqData = req.data;
+        console.log(reqData);
+        // this.setState({newPost: req.data})
       }
 
       ).catch(error => {
         console.log(error.data.newPost);
-        this.setState(error.data)
-      })
+        this.setState(error.data) })
+     
   }
 
 
