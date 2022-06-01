@@ -32,11 +32,11 @@ class PostAdd extends Component {
         let reqData = req.data;
         console.log(reqData);
         // this.setState({newPost: req.data})
-      }
+      })
 
-      ).catch(error => {
-        console.log(error.data.newPost);
-        this.setState(error.data) })
+      // .catch(error => {
+      //   console.log(error.data.newPost);
+      //   this.setState(error.data) })
      
   }
 
