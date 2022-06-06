@@ -6,6 +6,7 @@ import SignUp from './SignUp';
 import { Routes, Route, Outlet, Link, Router } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
+import AddPost from './AddPost';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
   const Logout = (e) => {
     e.preventDefault();
 
-    axios.post('https://akademia108.pl/api/social-app/user/logout', {}, axiosConfig )
+    axios.post('https://akademia108.pl/api/social-app/user/logout', {}, axiosConfig)
 
       .then((req) => {
         setUser(null);
@@ -66,6 +67,10 @@ function App() {
             <Link to="/" onClick={Logout}>Logout</Link>
           </li>}
 
+          {user && <li className='addnewPost'>
+            <Link to="/AddPost">AddPost</Link>
+          </li>}
+
         </ul>
 
       </nav>
@@ -73,6 +78,7 @@ function App() {
         <Route path="/" element={<Home user={user} />} />
         <Route path="/login" element={<Login setUser={setUser} user={user} />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/addpost" element={<AddPost />} />
       </Routes>
 
     </div>

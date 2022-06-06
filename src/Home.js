@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Home.css';
 import axios from 'axios';
 import Alteposts from './Alteposts';
+import AddPost from './AddPost';
 
 
 
