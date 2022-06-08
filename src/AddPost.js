@@ -6,46 +6,48 @@ import './AddPost.css';
 
 
 class AddPost extends Component {
-  // constructor() {
-  //   super();
+  constructor(props) {
+    super(props);
 
-  //   this.state = {
-  //     postContent: "",
-  //   }
-  // }
+    this.state = {
+      value: '',
+    }
+  }
 
 
   addnewPost = (e) => {
     e.preventDefault();
 
-
     const data = {
-      content: this._inputName.value
+      content: this.textinput.value
     }
+    
+      let axiosConfig = {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: 'Bearer' + this.props.user?.jwt_token
+        }
+      };
 
-    let axiosConfig = {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: 'Bearer' + this.props.user?.jwt_token
-      }
-    };
+      axios.post('https://akademia108.pl/api/social-app/post/add', data, axiosConfig)
+        .then((res) => {
 
-    axios.post('https://akademia108.pl/api/social-app/post/add', data, axiosConfig)
-      .then((res) => {
-        console.log(res.data);
-      })
+          console.log(res.data);
+          this.textinput.value = '';
+          
+        })
       // .catch((err) => {
       //   console.error(err);
-      // });
+      // }); 
+  }
 
-
-
-
+  render() {
     return (
       <div className="add-post">
         <form onSubmit={this.addnewPost} className="addnewPost">
-          <textarea placeholder="Treść posta ..."></textarea>
+          <textarea ref={textarea => this.textinput = textarea}
+            placeholder="Treść posta ..." ></textarea>
           <button type="submit" className="addbutton">Upublicznij</button>
         </form>
       </div>

@@ -68,7 +68,7 @@ function App() {
           </li>}
 
           {user && <li className='addnewPost'>
-            <Link to="/AddPost">AddPost</Link>
+            <Link to="/addpost">AddPost</Link>
           </li>}
 
         </ul>
