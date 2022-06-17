@@ -6,13 +6,13 @@ import './AddPost.css';
 
 
 class AddPost extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      value: '',
-    }
-  }
+  //   this.state = {
+  //     value: '',
+  //   }
+  // }
 
 
   addnewPost = (e) => {
@@ -21,35 +21,40 @@ class AddPost extends Component {
     const data = {
       content: this.textinput.value
     }
+
     
-      let axiosConfig = {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: 'Bearer' + this.props.user?.jwt_token
-        }
-      };
+    const axiosConfig = {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer' + this.props.user?.jwt_token
+      }
+    };
 
-      axios.post('https://akademia108.pl/api/social-app/post/add', data, axiosConfig)
-        .then((res) => {
+    axios.post('https://akademia108.pl/api/social-app/post/add', {data}, axiosConfig)
+      .then((res) => {
 
-          console.log(res.data);
-          this.textinput.value = '';
-          
-        })
-      // .catch((err) => {
-      //   console.error(err);
-      // }); 
+        console.log(res);
+        // this.setState({value: res.data.value })
+        // this.textinput.value = '';
+
+      })
+    // .catch((err) => {
+    //   console.error(err);
+    // }); 
   }
+
 
   render() {
     return (
       <div className="add-post">
-        <form onSubmit={this.addnewPost} className="addnewPost">
-          <textarea ref={textarea => this.textinput = textarea}
-            placeholder="Treść posta ..." ></textarea>
-          <button type="submit" className="addbutton">Upublicznij</button>
-        </form>
+        {!this.props.user &&
+          <form onSubmit={this.addnewPost} className="addnewPost">
+            <textarea ref={textarea => this.textinput = textarea}
+              placeholder="Treść posta ..." ></textarea>
+            <button type="submit" className="addbutton">Upublicznij</button>
+          </form>
+        }
       </div>
     )
   }
